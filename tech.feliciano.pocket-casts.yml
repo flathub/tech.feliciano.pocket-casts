@@ -51,6 +51,9 @@ modules:
       - type: patch
         path: 0001-flatpak-Add-missing-item-in-appdata-file.patch
         use-git-am: true
+      - type: patch
+        path: 0001-flatpak-Fix-screenshot-URL.patch
+        use-git-am: true
     build-commands:
       - HOME=$PWD yarn config --offline set yarn-offline-mirror $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror
       - yarn --offline
