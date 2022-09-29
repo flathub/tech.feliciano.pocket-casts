@@ -1,0 +1,26 @@
+From 1ce4b282e592963451b0f15d4dde051aeb473f20 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Thu, 29 Sep 2022 16:02:51 +0200
+Subject: [PATCH] flatpak: Fix screenshot URL
+
+The main development branch was renamed, so the URL changed.
+---
+ flatpak/tech.feliciano.pocket-casts.appdata.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/flatpak/tech.feliciano.pocket-casts.appdata.xml b/flatpak/tech.feliciano.pocket-casts.appdata.xml
+index dac6a6f..b5829be 100644
+--- a/flatpak/tech.feliciano.pocket-casts.appdata.xml
++++ b/flatpak/tech.feliciano.pocket-casts.appdata.xml
+@@ -15,7 +15,7 @@
+   </description>
+   <screenshots>
+     <screenshot type="default">
+-      <image type="source">https://github.com/felicianotech/pocket-casts-desktop-app/raw/master/screenshot.png</image>
++      <image type="source">https://raw.githubusercontent.com/felicianotech/pocket-casts-desktop-app/trunk/screenshot.png</image>
+     </screenshot>
+   </screenshots>
+   <content_rating type="oars-1.1" />
+-- 
+2.37.3
+

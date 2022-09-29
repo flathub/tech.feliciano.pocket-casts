@@ -1,11 +1,11 @@
 app-id: tech.feliciano.pocket-casts
 runtime: org.freedesktop.Platform
-runtime-version: '20.08'
+runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node14
+  - org.freedesktop.Sdk.Extension.node18
 base: org.electronjs.Electron2.BaseApp
-base-version: '20.08'
+base-version: '22.08'
 command: run.sh
 separate-locales: false
 finish-args:
@@ -34,7 +34,7 @@ modules:
   - name: pocket-casts
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node14/bin
+      append-path: /usr/lib/sdk/node18/bin
       env:
         CHROMEDRIVER_SKIP_DOWNLOAD: 'true'
         npm_config_nodedir: '/usr/lib/sdk/node14'
@@ -50,6 +50,9 @@ modules:
           - /app/lib/pocket-casts/pocket-casts --no-sandbox
       - type: patch
         path: 0001-flatpak-Add-missing-item-in-appdata-file.patch
+        use-git-am: true
+      - type: patch
+        path: 0001-flatpak-Fix-screenshot-URL.patch
         use-git-am: true
     build-commands:
       - HOME=$PWD yarn config --offline set yarn-offline-mirror $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror
