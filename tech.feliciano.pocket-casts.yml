@@ -42,18 +42,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        commit: 5eab5710634aa24b958db905ed3339b39c04dc9d
+        commit: 027d9ec212e7090ac46c227e0083a778a8c36428
       - "generated-sources.json"
       - type: script
         dest-filename: run.sh
         commands:
           - /app/lib/pocket-casts/pocket-casts --no-sandbox
-      - type: patch
-        path: 0001-flatpak-Add-missing-item-in-appdata-file.patch
-        use-git-am: true
-      - type: patch
-        path: 0001-flatpak-Fix-screenshot-URL.patch
-        use-git-am: true
     build-commands:
       - HOME=$PWD yarn config --offline set yarn-offline-mirror $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror
       - yarn --offline
