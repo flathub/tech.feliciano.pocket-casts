@@ -53,6 +53,10 @@ modules:
       - type: patch
         path: update-release-notes.patch
         use-git-am: true
+      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/104
+      - type: patch
+        path: 0001-Don-t-print-text-on-exit.patch
+        use-git-am: true
       - type: script
         dest-filename: run.sh
         commands:

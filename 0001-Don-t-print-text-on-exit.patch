@@ -1,0 +1,24 @@
+From 0469ca473b733299002e4e317b4b36c451c95f06 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Tue, 8 Oct 2024 20:35:51 +0200
+Subject: [PATCH] Don't print text on exit
+
+---
+ main.js | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/main.js b/main.js
+index ed677aafdf4f..8ae9efccc689 100644
+--- a/main.js
++++ b/main.js
+@@ -159,7 +159,6 @@ app.on( "ready", () => {
+ });
+ 
+ app.on( "window-all-closed", () => {
+-  console.log("window-all-closed");
+ 	if( process.platform !== "darwin" ){
+ 		app.quit()
+ 	}
+-- 
+2.46.2
+
