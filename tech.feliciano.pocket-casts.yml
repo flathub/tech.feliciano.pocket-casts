@@ -1,10 +1,10 @@
 app-id: tech.feliciano.pocket-casts
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '22.08'
+runtime-version: &runtime-version '24.08'
 sdk: org.freedesktop.Sdk
-# Add the Node 18 SDK extension.
+# Add the Node 20 SDK extension.
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node18
+  - org.freedesktop.Sdk.Extension.node20
 base: org.electronjs.Electron2.BaseApp
 base-version: *runtime-version
 command: run.sh
@@ -12,8 +12,9 @@ separate-locales: false
 finish-args:
   # Share IPC namespace with the host, without it the X11 shared memory extension will not work.
   - --share=ipc
-  # Show windows using X11
-  - --socket=x11
+  # Show windows using Wayland with a fallback to Xorg.
+  - --socket=wayland
+  - --socket=fallback-x11
   # Pulseaudio for audio.
   - --socket=pulseaudio
   # Allow access to the network.
@@ -22,54 +23,62 @@ finish-args:
   - --device=dri
   # Allow access to appindicator icons on KDE
   - --talk-name=org.kde.StatusNotifierWatcher
+  - --talk-name=com.canonical.AppMenu.Registrar
   # Allow access to MPRIS controls.
   - --own-name=org.mpris.MediaPlayer2.chromium.*
 modules:
-  - name: yarn
+  - name: node
     buildsystem: simple
     build-commands:
-      - mkdir --parents /app/share/yarn/
-      - cp --archive * /app/share/yarn/
-      - ln --symbolic /app/share/yarn/bin/yarn /app/bin/yarn
-      - ln --symbolic /app/share/yarn/bin/yarnpkg /app/bin/yarnpkg
-    cleanup:
-      - "*"
-    sources:
-      - type: archive
-        sha256: df202627d9a70cf09ef2fb11cb298cb619db1b958590959d6f6e571b50656029
-        url: https://github.com/yarnpkg/yarn/releases/download/v1.16.0/yarn-v1.16.0.tar.gz
-
+      - /usr/lib/sdk/node20/install-sdk.sh
   - name: pocket-casts
     buildsystem: simple
     build-options:
-      append-path: /usr/lib/sdk/node18/bin
+      # Add the node bin directory.
+      append-path: /usr/lib/sdk/node20/bin
       env:
-        CHROMEDRIVER_SKIP_DOWNLOAD: 'true'
-        npm_config_nodedir: '/usr/lib/sdk/node14'
         XDG_CACHE_HOME: /run/build/pocket-casts/flatpak-node/cache
+        npm_config_cache: /run/build/pocket-casts/flatpak-node/npm-cache
+        npm_config_nodedir: /usr/lib/sdk/node20
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        commit: 5eab5710634aa24b958db905ed3339b39c04dc9d
+        tag: v0.8.0
+        commit: 06d0439647b500b0ab84566d2d9028d1cff5ede6
+        x-checker-data:
+          type: git
+          tag-pattern: ^v([\d.]+)$
       - "generated-sources.json"
+      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/103
+      - type: patch
+        path: update-release-notes.patch
+        use-git-am: true
       - type: script
         dest-filename: run.sh
         commands:
-          - /app/lib/pocket-casts/pocket-casts --no-sandbox
-      - type: patch
-        path: 0001-flatpak-Add-missing-item-in-appdata-file.patch
-        use-git-am: true
-      - type: patch
-        path: 0001-flatpak-Fix-screenshot-URL.patch
-        use-git-am: true
+          - export TMPDIR=$XDG_RUNTIME_DIR/app/$FLATPAK_ID
+          - WAYLAND_SOCKET=${WAYLAND_DISPLAY:-"wayland-0"}
+          - FLAGS=""
+          - if [[ -e "$XDG_RUNTIME_DIR/${WAYLAND_SOCKET}" || -e "${WAYLAND_DISPLAY}"
+            ]]; then
+          - FLAGS="$FLAGS --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto"
+          - fi
+          - FLATPAK_HOST=1 zypak-wrapper.sh /app/lib/pocket-casts/pocket-casts
+            $FLAGS "$@"
     build-commands:
-      - HOME=$PWD yarn config --offline set yarn-offline-mirror $FLATPAK_BUILDER_BUILDDIR/flatpak-node/yarn-mirror
-      - yarn --offline
-      - yarn run --offline pack
-      - install -Dm 644 flatpak/tech.feliciano.pocket-casts.appdata.xml /app/share/metainfo/tech.feliciano.pocket-casts.appdata.xml
-      - install -Dm 644 flatpak/tech.feliciano.pocket-casts.desktop /app/share/applications/tech.feliciano.pocket-casts.desktop
-      - install -Dm 644 icon.png /app/share/icons/tech.feliciano.pocket-casts.png
-      - mkdir -p /app/lib/ /app/bin
-      - cp -r dist/linux-*unpacked/ /app/lib/pocket-casts/
-      - install run.sh /app/bin/
+      # Install NPM Dependencies
+      - npm install --offline
+      # Run electron-forge package
+      - npm run package
+      # Install package to ${FLATPAK_DEST}
+      - mkdir -p ${FLATPAK_DEST}/lib/pocket-casts
+      - cp -r out/pocket-casts-linux-*/* ${FLATPAK_DEST}/lib/pocket-casts
+      # Install upstream icon
+      - install -Dm644 icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      # Install upstream desktop file
+      - install -Dm644 flatpak/tech.feliciano.pocket-casts.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      # Install upstream metainfo.
+      - install -Dm644 flatpak/tech.feliciano.pocket-casts.appdata.xml ${FLATPAK_DEST}/share/metainfo/${FLATPAK_ID}.metainfo.xml
+      # Install Flatpak specific wrapper
+      - install -Dm755 run.sh ${FLATPAK_DEST}/bin/run.sh
 
