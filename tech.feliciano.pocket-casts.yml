@@ -2,6 +2,7 @@ app-id: tech.feliciano.pocket-casts
 runtime: org.freedesktop.Platform
 runtime-version: &runtime-version '22.08'
 sdk: org.freedesktop.Sdk
+# Add the Node 18 SDK extension.
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node18
 base: org.electronjs.Electron2.BaseApp
@@ -9,12 +10,19 @@ base-version: *runtime-version
 command: run.sh
 separate-locales: false
 finish-args:
+  # Share IPC namespace with the host, without it the X11 shared memory extension will not work.
   - --share=ipc
+  # Show windows using X11
   - --socket=x11
+  # Pulseaudio for audio.
   - --socket=pulseaudio
+  # Allow access to the network.
   - --share=network
+  # Required for hardware acceleration.
   - --device=dri
+  # Allow access to appindicator icons on KDE
   - --talk-name=org.kde.StatusNotifierWatcher
+  # Allow access to MPRIS controls.
   - --own-name=org.mpris.MediaPlayer2.chromium.*
 modules:
   - name: yarn
