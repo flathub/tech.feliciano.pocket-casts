@@ -1,11 +1,11 @@
 app-id: tech.feliciano.pocket-casts
 runtime: org.freedesktop.Platform
-runtime-version: '22.08'
+runtime-version: &runtime-version '22.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node18
 base: org.electronjs.Electron2.BaseApp
-base-version: '22.08'
+base-version: *runtime-version
 command: run.sh
 separate-locales: false
 finish-args:
