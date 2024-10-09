@@ -1,4 +1,9 @@
+# Directories
 .flatpak-builder/
 _build/
 _repo/
+
+# Loose Files
 tech.feliciano.pocket-casts.flatpak
+package.json
+package-lock.json
