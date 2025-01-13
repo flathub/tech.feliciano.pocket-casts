@@ -44,20 +44,12 @@ modules:
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        tag: v0.8.0
-        commit: 06d0439647b500b0ab84566d2d9028d1cff5ede6
+        tag: v0.9.0
+        commit: 8f51d04bd664c528e04f195b7e15b55f8ad5c96a
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
-      - "generated-sources.json"
-      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/103
-      - type: patch
-        path: update-release-notes.patch
-        use-git-am: true
-      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/104
-      - type: patch
-        path: 0001-Don-t-print-text-on-exit.patch
-        use-git-am: true
+      - generated-sources.json
       - type: script
         dest-filename: run.sh
         commands:
@@ -68,8 +60,8 @@ modules:
             ]]; then
           - FLAGS="$FLAGS --enable-features=WaylandWindowDecorations --ozone-platform-hint=auto"
           - fi
-          - FLATPAK_HOST=1 zypak-wrapper.sh /app/lib/pocket-casts/pocket-casts
-            $FLAGS "$@"
+          - FLATPAK_HOST=1 zypak-wrapper.sh /app/lib/pocket-casts/pocket-casts $FLAGS
+            "$@"
     build-commands:
       # Install NPM Dependencies
       - npm install --offline
