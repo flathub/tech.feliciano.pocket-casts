@@ -1,6 +1,13 @@
 [
     {
         "type": "file",
+        "url": "https://codeload.github.com/electron/node-gyp/tar.gz/06b29aafb7708acef8b3669835c8a7857ebc92d2",
+        "sha512": "3178339530c41277490774c16ef779b8540effc81a20da351df7a7f2f79fe6babf54754f781eb7baebffb8ee7ef0616c009feb6aebba5c1efd4ba2b8f9a5dcfb",
+        "dest-filename": "339530c41277490774c16ef779b8540effc81a20da351df7a7f2f79fe6babf54754f781eb7baebffb8ee7ef0616c009feb6aebba5c1efd4ba2b8f9a5dcfb",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/31/78"
+    },
+    {
+        "type": "file",
         "url": "https://github.com/electron/electron/releases/download/v33.3.1/SHASUMS256.txt",
         "sha256": "43dccbec16210e1afec07d316b8397c16fa45117e9af9ad95e004e56c25213a8",
         "dest-filename": "SHASUMS256.txt-33.3.1",
@@ -1760,6 +1767,13 @@
     },
     {
         "type": "file",
+        "url": "https://registry.npmjs.org/node-gyp",
+        "sha512": "0e93799501e2164b703479f2e01b55c345d7d5cb93737adc13635a34814bf5299fb20134de3c32fa05806419cd47779646d6c71dd6a11547e1e6388aba30f4d3",
+        "dest-filename": "799501e2164b703479f2e01b55c345d7d5cb93737adc13635a34814bf5299fb20134de3c32fa05806419cd47779646d6c71dd6a11547e1e6388aba30f4d3",
+        "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/0e/93"
+    },
+    {
+        "type": "file",
         "url": "https://registry.npmjs.org/nopt/-/nopt-6.0.0.tgz",
         "sha512": "6702e96d381d86e6549d9ce377b9dbd5957ee03a220bafec7e254aa24ef6ca6ff84e57fe0c57651d8993d893e670d35657a3e2dd20dfd644fe038afd453b93f6",
         "dest-filename": "e96d381d86e6549d9ce377b9dbd5957ee03a220bafec7e254aa24ef6ca6ff84e57fe0c57651d8993d893e670d35657a3e2dd20dfd644fe038afd453b93f6",
@@ -2737,12 +2751,6 @@
         "sha512": "ad592cbec9cd09d27fa2119ceb180fc3237c7a1782c6c88b33c9b1b84fedfe6395a897b03ee3b59a22e94c74224604ca08b7b12f831e00555a82db3b1e6359d9",
         "dest-filename": "2cbec9cd09d27fa2119ceb180fc3237c7a1782c6c88b33c9b1b84fedfe6395a897b03ee3b59a22e94c74224604ca08b7b12f831e00555a82db3b1e6359d9",
         "dest": "flatpak-node/npm-cache/_cacache/content-v2/sha512/ad/59"
-    },
-    {
-        "type": "git",
-        "url": "https://git@github.com/electron/node-gyp.git",
-        "commit": "06b29aafb7708acef8b3669835c8a7857ebc92d2",
-        "dest": "flatpak-node/git-packages/@electron/node-gyp-06b29aafb7708acef8b3669835c8a7857ebc92d2"
     },
     {
         "type": "inline",
@@ -3970,6 +3978,12 @@
     },
     {
         "type": "inline",
+        "contents": "8aaefa0816a25d57f1676ac956ef2e73ff2cbe87\t{\"key\": \"make-fetch-happen:request-cache:https://codeload.github.com/electron/node-gyp/tar.gz/06b29aafb7708acef8b3669835c8a7857ebc92d2\", \"integrity\": \"sha512-MXgzlTDEEndJB3TBbvd5uFQO/8gaINo1Hfen8vef5rq/VHVPeB63uuv/uO5+8GFsAJ/rauu6XB79S6K4+aXc+w==\", \"time\": 0, \"size\": 564012, \"metadata\": {\"url\": \"https://codeload.github.com/electron/node-gyp/tar.gz/06b29aafb7708acef8b3669835c8a7857ebc92d2\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "e3821bd047ca393d43d18e4eba7bb6955c30774775224d93930b71cedec3",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/d9/6a"
+    },
+    {
+        "type": "inline",
         "contents": "8b09895cce1ac24c054058ded5c09047ca2b3aa0\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/load-json-file/-/load-json-file-2.0.0.tgz\", \"integrity\": \"sha1-eUfkIUmvgNaWy/eXvKq8/h/inKg=\", \"time\": 0, \"size\": 1750, \"metadata\": {\"url\": \"https://registry.npmjs.org/load-json-file/-/load-json-file-2.0.0.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "748ba4158788867741f45507cdb32e38641633ffbc02082393302fb79d71",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/e0/b8"
@@ -4744,6 +4758,12 @@
     },
     {
         "type": "inline",
+        "contents": "d7c378a52b9ab714f0a0553e4da1ebad4c090a16\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/node-gyp\", \"integrity\": \"sha512-DpN5lQHiFktwNHny4BtVw0XX1cuTc3rcE2NaNIFL9SmfsgE03jwy+gWAZBnNR3eWRtbHHdahFUfh5jiKujD00w==\", \"time\": 0, \"size\": 293235, \"metadata\": {\"url\": \"https://registry.npmjs.org/node-gyp\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
+        "dest-filename": "e538e0c3486949182875d0e948ee068f56f7cbd89729fc67a00bec8d83ae",
+        "dest": "flatpak-node/npm-cache/_cacache/index-v5/d7/a3"
+    },
+    {
+        "type": "inline",
         "contents": "d879978b41161ee956b6ba11a3fd38f48ccaa15a\t{\"key\": \"make-fetch-happen:request-cache:https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz\", \"integrity\": \"sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==\", \"time\": 0, \"size\": 4239, \"metadata\": {\"url\": \"https://registry.npmjs.org/brace-expansion/-/brace-expansion-1.1.11.tgz\", \"reqHeaders\": {}, \"resHeaders\": {}}}",
         "dest-filename": "6532bc014331c9b572482a4bd805bf54a7ff8b4ca179b1c811aff3dec690",
         "dest": "flatpak-node/npm-cache/_cacache/index-v5/a1/ff"
@@ -5050,19 +5070,16 @@
     },
     {
         "type": "script",
-        "commands": [
-            "$FLATPAK_BUILDER_BUILDDIR/flatpak-node/patch.sh"
-        ],
-        "dest-filename": "patch-all.sh",
+        "commands": [],
+        "dest-filename": "patch.sh",
         "dest": "flatpak-node"
     },
     {
         "type": "script",
         "commands": [
-            "jq --arg buildroot \"$FLATPAK_BUILDER_BUILDDIR\" --argjson data '{\"github:electron/node-gyp#06b29aafb7708acef8b3669835c8a7857ebc92d2\": \"flatpak-node/git-packages/@electron/node-gyp-06b29aafb7708acef8b3669835c8a7857ebc92d2#06b29aafb7708acef8b3669835c8a7857ebc92d2\", \"github:electron/node-gyp\": \"flatpak-node/git-packages/@electron/node-gyp-06b29aafb7708acef8b3669835c8a7857ebc92d2#06b29aafb7708acef8b3669835c8a7857ebc92d2\", \"git+ssh://git@github.com:electron/node-gyp.git#06b29aafb7708acef8b3669835c8a7857ebc92d2\": \"flatpak-node/git-packages/@electron/node-gyp-06b29aafb7708acef8b3669835c8a7857ebc92d2#06b29aafb7708acef8b3669835c8a7857ebc92d2\", \"git+ssh://git@github.com:electron/node-gyp.git\": \"flatpak-node/git-packages/@electron/node-gyp-06b29aafb7708acef8b3669835c8a7857ebc92d2#06b29aafb7708acef8b3669835c8a7857ebc92d2\"}' 'walk(    if type == \"object\"    then        to_entries | map(            if (.value | type == \"string\") and $data[.value]            then .value = \"git+file:\\($buildroot)/\\($data[.value])\"            else .            end        ) | from_entries    else .    end)' $FLATPAK_BUILDER_BUILDDIR/package.json > $FLATPAK_BUILDER_BUILDDIR/package.json.new",
-            "mv $FLATPAK_BUILDER_BUILDDIR/package.json{.new,}"
+            "$FLATPAK_BUILDER_BUILDDIR/flatpak-node/patch.sh"
         ],
-        "dest-filename": "patch.sh",
+        "dest-filename": "patch-all.sh",
         "dest": "flatpak-node"
     },
     {
