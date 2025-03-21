@@ -40,6 +40,7 @@ modules:
         XDG_CACHE_HOME: /run/build/pocket-casts/flatpak-node/cache
         npm_config_cache: /run/build/pocket-casts/flatpak-node/npm-cache
         npm_config_nodedir: /usr/lib/sdk/node20
+        DEBUG: "@electron/get:*,electron-forge:*,@electron/packager,get-package-info"
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
@@ -73,7 +74,7 @@ modules:
       # Install NPM Dependencies
       - npm install --offline
       # Run electron-forge package
-      - npm run package
+      - npm run --verbose package
       # Install package to ${FLATPAK_DEST}
       - mkdir -p ${FLATPAK_DEST}/lib/pocket-casts
       - cp -r out/pocket-casts-linux-*/* ${FLATPAK_DEST}/lib/pocket-casts
