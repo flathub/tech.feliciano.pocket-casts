@@ -1,6 +1,6 @@
-From ea0cae0ff7feb42f8a1cb5d6b9211f84acd94cca Mon Sep 17 00:00:00 2001
+From d98e22a8586fb86dde49b87b4cb6d507253b3060 Mon Sep 17 00:00:00 2001
 From: Bastien Nocera <hadess@hadess.net>
-Date: Fri, 28 Mar 2025 23:57:59 +0100
+Date: Sat, 29 Mar 2025 00:14:54 +0100
 Subject: [PATCH] Avoid network access to get Electron runtime checksums
 
 Avoid hitting the network to verify the runtime downloads by providing
@@ -8,30 +8,31 @@ them ahead of time. Should fix a build failure on newer versions of
 Electron.
 
 See: https://github.com/flathub/tech.feliciano.pocket-casts/pull/11#issuecomment-2758536925
+and: https://github.com/flathub/tech.feliciano.pocket-casts/pull/15#issuecomment-2775799726
+
+Co-authored-by: Ian2020
 ---
- package.json | 9 ++++++++-
+ forge.config.js | 9 ++++++++-
  1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/package.json b/package.json
-index a4531457cad9..de0bab88eceb 100644
---- a/package.json
-+++ b/package.json
-@@ -68,7 +68,14 @@
- 	},
- 	"config": {
- 		"forge": {
--			"packagerConfig": {},
-+			"packagerConfig": {
-+				"download": {
-+					"checksums": {
-+						"electron-v33.3.1-linux-x64.zip": "cdca6f9ec2f98708dcbcb8baba3d0521e15ed4e5aab68b2d1c6668f99faafc38",
-+						"electron-v33.3.1-linux-arm64.zip": "b428ecca13d4ffc05c28e28759a310f317e4e89b05e9a30ba07e0d58fbaedef5"
-+					}
-+				}
-+			},
- 			"makers": [
- 				{
- 					"name": "@electron-forge/maker-zip",
+diff --git a/forge.config.js b/forge.config.js
+index 468fc4d3556d..a2b08414d54d 100644
+--- a/forge.config.js
++++ b/forge.config.js
+@@ -1,5 +1,12 @@
+ module.exports = {
+-	packagerConfig: {},
++	packagerConfig: {
++		"download": {
++			"checksums": {
++				"electron-v34.0.1-linux-x64.zip": "a80804d6469feeb71f8853cdc699a64dc07b07085c4a4c56eedfb24a3049f221",
++				"electron-v34.0.1-linux-arm64.zip": "db16bcca04ee7082f044d75e5410cb450725cb55c5498fac15c6f92079e856d0"
++			}
++		}
++	},
+ 	makers: [
+ 		{
+ 			name: '@electron-forge/maker-zip'
 -- 
 2.49.0
 
