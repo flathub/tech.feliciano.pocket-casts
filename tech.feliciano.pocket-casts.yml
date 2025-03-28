@@ -44,8 +44,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        tag: v0.9.0
-        commit: 8f51d04bd664c528e04f195b7e15b55f8ad5c96a
+        tag: v0.10.1
+        commit: 215d99d1eb8eef34484dc0b136f894ed335486d6
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
@@ -70,12 +70,12 @@ modules:
       # Install NPM Dependencies
       - npm install --offline
       # Run electron-forge package
-      - npm run --verbose package
+      - npx electron-forge package -- --arch=x64,arm64
       # Install package to ${FLATPAK_DEST}
       - mkdir -p ${FLATPAK_DEST}/lib/pocket-casts
       - cp -r out/pocket-casts-linux-*/* ${FLATPAK_DEST}/lib/pocket-casts
       # Install upstream icon
-      - install -Dm644 icon.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
+      - install -Dm644 img/icon-x512.png ${FLATPAK_DEST}/share/icons/hicolor/512x512/apps/${FLATPAK_ID}.png
       # Install upstream desktop file
       - install -Dm644 flatpak/tech.feliciano.pocket-casts.desktop /app/share/applications/${FLATPAK_ID}.desktop
       # Install upstream metainfo.
