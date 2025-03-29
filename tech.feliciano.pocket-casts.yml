@@ -40,12 +40,12 @@ modules:
         XDG_CACHE_HOME: /run/build/pocket-casts/flatpak-node/cache
         npm_config_cache: /run/build/pocket-casts/flatpak-node/npm-cache
         npm_config_nodedir: /usr/lib/sdk/node20
-        DEBUG: "@electron/get:*,electron-forge:*,@electron/packager,get-package-info"
+        DEBUG: '@electron/get:*,electron-forge:*,@electron/packager,get-package-info'
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        tag: v0.9.0
-        commit: 8f51d04bd664c528e04f195b7e15b55f8ad5c96a
+        tag: v0.10.1
+        commit: 215d99d1eb8eef34484dc0b136f894ed335486d6
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
