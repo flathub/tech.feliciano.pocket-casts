@@ -1,0 +1,31 @@
+From f2f044d477a03e28b33b08246081ec9b58edd3ce Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Sun, 30 Mar 2025 23:49:29 +0200
+Subject: [PATCH] Add release notes for 0.9.0
+
+---
+ flatpak/tech.feliciano.pocket-casts.appdata.xml | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/flatpak/tech.feliciano.pocket-casts.appdata.xml b/flatpak/tech.feliciano.pocket-casts.appdata.xml
+index fc49402907b3..f223787fd7a0 100644
+--- a/flatpak/tech.feliciano.pocket-casts.appdata.xml
++++ b/flatpak/tech.feliciano.pocket-casts.appdata.xml
+@@ -20,6 +20,14 @@
+   </screenshots>
+   <content_rating type="oars-1.1" />
+   <releases>
++    <release version="0.9.0" date="2025-01-13">
++      <description>
++        <p>
++          This version updates the dependencies, including the Electron framework,
++          and fixes a couple of bugs.
++        </p>
++      </description>
++    </release>
+     <release version="0.8.0" date="2024-07-23">
+       <description>
+         <p>
+-- 
+2.49.0
+
