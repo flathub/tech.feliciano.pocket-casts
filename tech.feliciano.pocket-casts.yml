@@ -51,8 +51,9 @@ modules:
           tag-pattern: ^v([\d.]+)$
       - type: patch
         path: 0001-Avoid-network-access-to-get-Electron-runtime-checksu.patch
+      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/124
       - type: patch
-        path: 0001-Add-release-notes-for-0.9.0.patch
+        path: appdata-releases.patch
       - generated-sources.json
       - type: script
         dest-filename: run.sh
