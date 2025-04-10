@@ -40,20 +40,17 @@ modules:
         XDG_CACHE_HOME: /run/build/pocket-casts/flatpak-node/cache
         npm_config_cache: /run/build/pocket-casts/flatpak-node/npm-cache
         npm_config_nodedir: /usr/lib/sdk/node20
-        DEBUG: "@electron/get:*,electron-forge:*,@electron/packager,get-package-info"
+        DEBUG: '@electron/get:*,electron-forge:*,@electron/packager,get-package-info'
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        tag: v0.10.1
-        commit: 215d99d1eb8eef34484dc0b136f894ed335486d6
+        tag: v0.10.2
+        commit: f2f6672b88d5c775242b5b633f6a89ae132a8f6d
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$
       - type: patch
         path: 0001-Avoid-network-access-to-get-Electron-runtime-checksu.patch
-      # https://github.com/FelicianoTech/pocket-casts-desktop-app/pull/124
-      - type: patch
-        path: appdata-releases.patch
       - generated-sources.json
       - type: script
         dest-filename: run.sh
