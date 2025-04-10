@@ -25,8 +25,8 @@ index 468fc4d3556d..a2b08414d54d 100644
 +	packagerConfig: {
 +		"download": {
 +			"checksums": {
-+				"electron-v34.0.1-linux-x64.zip": "a80804d6469feeb71f8853cdc699a64dc07b07085c4a4c56eedfb24a3049f221",
-+				"electron-v34.0.1-linux-arm64.zip": "db16bcca04ee7082f044d75e5410cb450725cb55c5498fac15c6f92079e856d0"
++				"electron-v34.5.0-linux-x64.zip": "11ba0d7da512d7a9f473e599de7698b7a1760c6afd9a01434ea29ccbfc7975e2",
++				"electron-v34.5.0-linux-arm64.zip": "7eee40339a9ad637c6360edfd02d5e02522432c7b0f0c70cf00cf4684e1b6691"
 +			}
 +		}
 +	},
