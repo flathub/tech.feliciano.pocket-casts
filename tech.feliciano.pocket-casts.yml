@@ -51,6 +51,8 @@ modules:
           tag-pattern: ^v([\d.]+)$
       - type: patch
         path: 0001-Avoid-network-access-to-get-Electron-runtime-checksu.patch
+      - type: patch
+        path: 0001-Disable-Global-Shortcuts.patch
       - generated-sources.json
       - type: script
         dest-filename: run.sh

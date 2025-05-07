@@ -1,0 +1,38 @@
+From 65c56d3e721698305714418ff4f5c83a379f4953 Mon Sep 17 00:00:00 2001
+From: Bastien Nocera <hadess@hadess.net>
+Date: Wed, 7 May 2025 06:09:52 +0200
+Subject: [PATCH] Disable Global Shortcuts
+
+They should already be proxied through MPRIS.
+See:
+https://github.com/FelicianoTech/pocket-casts-desktop-app/issues/135
+https://gitlab.gnome.org/GNOME/xdg-desktop-portal-gnome/-/issues/168
+---
+ main.js | 11 -----------
+ 1 file changed, 11 deletions(-)
+
+diff --git a/main.js b/main.js
+index 8ae9efccc689..bc7763ee70f8 100644
+--- a/main.js
++++ b/main.js
+@@ -127,17 +127,6 @@ app.on( "ready", () => {
+ 		}
+ 	});
+ 
+-	// Register media controls
+-	globalShortcut.register( 'MediaPlayPause', () => {
+-		mainWindow.webContents.executeJavaScript( "document.querySelector( '.play_pause_button' ).click()");
+-	});
+-	globalShortcut.register( 'MediaPreviousTrack', () => {
+-		mainWindow.webContents.executeJavaScript( "document.querySelector( '.skip_back_button' ).click()");
+-	});
+-	globalShortcut.register( 'MediaNextTrack', () => {
+-		mainWindow.webContents.executeJavaScript( "document.querySelector( '.skip_forward_button' ).click()");
+-  });
+-  
+   mainWindow.on( "resize", () => {
+     let { width, height } = mainWindow.getBounds();
+ 
+-- 
+2.49.0
+
