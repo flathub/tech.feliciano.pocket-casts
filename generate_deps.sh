@@ -62,14 +62,6 @@ done
 echo "All required tools are installed."
 
 # ---------------------------
-# Initialize Git Submodules
-# ---------------------------
-
-echo "Initializing git submodules..."
-git submodule update --init || error "Failed to initialize git submodules."
-echo "Git submodules initialized successfully."
-
-# ---------------------------
 # Install flatpak-node-generator
 # ---------------------------
 
@@ -78,7 +70,7 @@ if check_pipx_package "flatpak-node-generator"; then
     echo "'flatpak-node-generator' is already installed."
 else
     echo "'flatpak-node-generator' is not installed. Installing..."
-    pipx install flatpak-builder-tools/node || error "Failed to install 'flatpak-node-generator' via pipx."
+    pipx install --force 'git+https://github.com/flatpak/flatpak-builder-tools.git@refs/pull/382/head#subdirectory=node' || error "Failed to install 'flatpak-node-generator' via pipx."
     echo "'flatpak-node-generator' installed successfully."
 fi
 
