@@ -27,10 +27,10 @@ check_command "flatpak-builder"
 
 # Define required Flatpak packages
 REQUIRED_FLATPAK_PACKAGES=(
-    "org.freedesktop.Platform//24.08"
-    "org.freedesktop.Sdk//24.08"
-    "org.freedesktop.Sdk.Extension.node20//24.08"
-    "org.electronjs.Electron2.BaseApp//24.08"
+    "org.freedesktop.Platform//26.08"
+    "org.freedesktop.Sdk//26.08"
+    "org.freedesktop.Sdk.Extension.node24//26.08"
+    "org.electronjs.Electron2.BaseApp//26.08"
 )
 
 # Function to check if a Flatpak package is installed

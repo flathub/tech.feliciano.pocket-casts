@@ -1,10 +1,10 @@
 app-id: tech.feliciano.pocket-casts
 runtime: org.freedesktop.Platform
-runtime-version: &runtime-version '24.08'
+runtime-version: &runtime-version '26.08'
 sdk: org.freedesktop.Sdk
-# Add the Node 20 SDK extension.
+# Add the Node 24 SDK extension.
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.node20
+  - org.freedesktop.Sdk.Extension.node24
 base: org.electronjs.Electron2.BaseApp
 base-version: *runtime-version
 command: run.sh
@@ -30,22 +30,22 @@ modules:
   - name: node
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/node20/install-sdk.sh
+      - /usr/lib/sdk/node24/install-sdk.sh
   - name: pocket-casts
     buildsystem: simple
     build-options:
       # Add the node bin directory.
-      append-path: /usr/lib/sdk/node20/bin
+      append-path: /usr/lib/sdk/node24/bin
       env:
         XDG_CACHE_HOME: /run/build/pocket-casts/flatpak-node/cache
         npm_config_cache: /run/build/pocket-casts/flatpak-node/npm-cache
-        npm_config_nodedir: /usr/lib/sdk/node20
+        npm_config_nodedir: /usr/lib/sdk/node24
         DEBUG: '@electron/get:*,electron-forge:*,@electron/packager,get-package-info'
     sources:
       - type: git
         url: https://github.com/felicianotech/pocket-casts-desktop-app
-        tag: v0.10.3
-        commit: 6e8597bcee3ef952ba1c0da0036c84ff6091ed56
+        tag: v0.14.0
+        commit: ae07bec294a06122efa2ff382eb22948e08afd6d
         x-checker-data:
           type: git
           tag-pattern: ^v([\d.]+)$

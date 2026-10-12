@@ -70,7 +70,7 @@ if check_pipx_package "flatpak-node-generator"; then
     echo "'flatpak-node-generator' is already installed."
 else
     echo "'flatpak-node-generator' is not installed. Installing..."
-    pipx install --force 'git+https://github.com/flatpak/flatpak-builder-tools.git@refs/pull/382/head#subdirectory=node' || error "Failed to install 'flatpak-node-generator' via pipx."
+    pipx install --force 'git+https://github.com/flatpak/flatpak-builder-tools.git@74697c75b630d7330e77250fc13cb5ea688d9479#subdirectory=node' || error "Failed to install 'flatpak-node-generator' via pipx."
     echo "'flatpak-node-generator' installed successfully."
 fi
 
